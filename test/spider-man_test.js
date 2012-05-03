@@ -1,4 +1,4 @@
-var spider_man = require('../lib/spider-man.js');
+var spiderman = require('../lib/spider-man.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -28,7 +28,7 @@ exports['awesome'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    test.equal(spider_man.awesome(), 'awesome', 'should be awesome.');
+    test.equal(typeof(spiderman.punch), 'function', 'spiderman.punch is a function');
     test.done();
   }
 };
