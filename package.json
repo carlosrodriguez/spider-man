@@ -1,0 +1,35 @@
+{
+  "name": "spider-man",
+  "description": "Node.js spidering tool",
+  "version": "0.1.0",
+  "homepage": "https://github.com/carlosrodriguez/spider-man",
+  "author": {
+    "name": "Carlos Rodriguez",
+    "email": "me@carlosrodriguez.us"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/carlosrodriguez/spider-man.git"
+  },
+  "bugs": {
+    "url": "https://github.com/carlosrodriguez/spider-man/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/carlosrodriguez/spider-man/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/spider-man",
+  "engines": {
+    "node": "~0.6.15"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.3.9"
+  },
+  "keywords": []
+}
