@@ -17,7 +17,6 @@ spiderman = {
         error 
 
     spider: (page) ->
-        console.log('spider called')
         cheerio = require('cheerio')
         request = require('request')
         zombie = require('zombie')
@@ -37,15 +36,19 @@ spiderman = {
 
                 _.each(links, (link) -> 
                     page = $(link).attr('href')
-                    if($.inArray(page, spiderman.pages) == -1)
+                    if($.inArray(page, _.pluck(spiderman.pages, "url")) == -1)
                         if(spiderman.checkInternal(page))
                             if(page.indexOf("http:") == -1)
-                                upcoming = (page.indexOf("/") == 0) ? "http://"+location+page : "http://"+location+"/"+page
+                                if(page.indexOf("/") == 0)
+                                    upcoming = "http://"+spiderman.location+page
+                                else
+                                    upcoming ="http://"+spiderman.location+"/"+page
                             else
                                 upcoming = page;
-                            
-                        spiderman.spider(upcoming);
-                        spiderman.pages.push(page);
+
+                            spiderman.spider(upcoming)
+                            r = response.statusCode
+                            spiderman.pages.push({url: page, status: r})
  
                     return
                 )
