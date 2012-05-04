@@ -20,15 +20,27 @@ var spiderman = require('../lib/spider-man.js');
     test.ifError(value)
 */
 
-exports['awesome'] = {
+exports['spiderman'] = {
   setUp: function(done) {
     // setup here
     done();
   },
-  'no args': function(test) {
-    test.expect(1);
+  'Sanity Check': function(test) {
+    test.expect(3);
     // tests here
     test.equal(typeof(spiderman.punch), 'function', 'spiderman.punch is a function');
+    test.equal(typeof(spiderman.spider), 'function', 'spiderman.spider is a function');
+    test.equal(typeof(spiderman.checkInternal), 'function', 'spiderman.checkInternal is a function');
+    test.done();
+  },
+  'Check internal links': function(test) {
+    //test.expect(3);
+    // tests here
+    spiderman.location = "http://www.bgtpartners.com";
+    test.ok(spiderman.checkInternal("test.html"), 'Got internal link');
+    test.ok(!spiderman.checkInternal("http://www.test.com/test.html"), 'Got external link');
+    test.ok(!spiderman.checkInternal("test.jpg"), 'Got external link for a media file');
+
     test.done();
   }
 };
