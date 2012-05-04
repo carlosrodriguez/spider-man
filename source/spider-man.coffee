@@ -3,6 +3,7 @@ spiderman = {
     location: ''
     pages: []
     pageCount: 0
+    totalPages: 0
     options: {} 
 
     punch: (page) ->
@@ -10,6 +11,11 @@ spiderman = {
         console.log('Begin')
         spiderman.location = page
         spiderman.spider(page)
+
+        process.on('exit', () ->
+            console.log(spiderman.pages)
+        )
+
         return    
 
     showErrors: (error) ->
@@ -32,6 +38,8 @@ spiderman = {
                 $body = $('body')
                 links = $('a')
 
+                spiderman.totalPages += links.length
+
                 if(links.length <= 0) then spiderman.showErrors("No links found, perhaps it is a flash page?")
 
                 _.each(links, (link) -> 
@@ -48,7 +56,7 @@ spiderman = {
 
                             spiderman.spider(upcoming)
                             r = response.statusCode
-                            spiderman.pages.push({url: page, status: r})
+                            spiderman.pages.push({url: page, status: r}) 
  
                     return
                 )
@@ -66,8 +74,7 @@ spiderman = {
             if ((comp.test(page)) || (page.indexOf("http:") == -1) && (page.indexOf("javascript:") == -1) && (!page.match(spiderman.extensions))) 
                 true
             else 
-                false
-            
+                false 
         else
             false
 
