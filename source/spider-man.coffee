@@ -9,11 +9,12 @@ spiderman = {
     punch: (page) ->
         # spiderman._.extend(this.options, opts);
         console.log('Begin')
+        sys = require('util')
         spiderman.location = page
         spiderman.spider(page)
 
         process.on('exit', () ->
-            console.log(spiderman.pages)
+            console.log(sys.inspect(spiderman.pages))
         )
 
         return    
@@ -28,7 +29,7 @@ spiderman = {
         zombie = require('zombie')
         _ = require('lodash')
 
-        console.log("Check "+page);
+        console.log("Checking: "+page);
 
         request({uri: page}, (err, response, body) ->
             if(typeof response != "undefined")
@@ -48,9 +49,9 @@ spiderman = {
                         if(spiderman.checkInternal(page))
                             if(page.indexOf("http:") == -1)
                                 if(page.indexOf("/") == 0)
-                                    upcoming = "http://"+spiderman.location+page
+                                    upcoming = spiderman.location+page
                                 else
-                                    upcoming ="http://"+spiderman.location+"/"+page
+                                    upcoming = spiderman.location+"/"+page
                             else
                                 upcoming = page;
 
