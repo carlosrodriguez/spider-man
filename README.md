@@ -24,7 +24,7 @@ Fork and send pull requests as often as you want.
 * Need to set better unit tests
 
 ## Release History
-v0.1.0
+v0.1.7
 
 ## License
 Copyright (c) 2012 Carlos Rodriguez  
