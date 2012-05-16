@@ -6,14 +6,14 @@ spiderman = {
     totalPages: 0
     options: {} 
 
-    web: (page, csv) ->
+    web: (page, callback) ->
         # spiderman._.extend(this.options, opts);
         console.log('Begin')
 
         spiderman.spider(page, true)
    
         process.on('exit', () ->
-            spiderman.showResults()
+            if(typeof(callback) == "function") then callback() else spiderman.showResults()
         )
 
         return 
