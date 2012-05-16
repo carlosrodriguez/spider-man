@@ -33,7 +33,9 @@ spiderman = {
         request({uri: page}, (err, response, body) ->
             if(typeof response != "undefined")
 
-                if(err && response.statusCode != 200)
+                # if(err) spiderman.showErrors(err)
+
+                if(response.statusCode != 200)
                     spiderman.pages.push({url: page, status: response.statusCode}) 
                 else
                     if(typeof(follow) != "undefined")
