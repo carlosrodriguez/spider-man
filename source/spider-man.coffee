@@ -14,7 +14,7 @@ spiderman = {
         spiderman.spider(page, true)
    
         process.on('exit', () ->
-            if(typeof(callback) == "function") then callback() else spiderman.showResults()
+            return spiderman.showResults(callback)
         )
 
         return 
@@ -59,6 +59,10 @@ spiderman = {
                                 spiderman.spider(upcoming, true)
                                 r = response.statusCode
                                 spiderman.pages.push({url: page, status: r}) 
+                            else
+                                console.log("Not checking external page: "+page);
+                        else
+                            consle.log("Not checking already spidered page: "+page)
      
                         return
                     )
@@ -82,11 +86,11 @@ spiderman = {
         else
             false
 
-    showResults: () ->
+    showResults: (callback) ->
         sys = require('util')
         console.log(sys.inspect(spiderman.pages))
 
-        return spiderman.pages
+        return if(typeof(callback) == "function") then callback(spiderman.pages) else spiderman.pages
 }
 
 module.exports = spiderman
