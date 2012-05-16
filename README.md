@@ -6,12 +6,8 @@ Node.js spidering tool
 Install the module with: `npm install spider-man`
 
 ```javascript
-var spider_man = require('spider-man');
-spiderman.punch("http://www.spiderthiswebsite.com");
-
-or
-
-spiderman.punch("path/to/csv", true); // Set to true to indicate CSV file
+var spider = require('spider-man');
+spider.web("http://www.spiderthiswebsite.com");
 ```
 
 ## Documentation
@@ -21,6 +17,11 @@ _(Coming soon)_
 _(Coming soon)_
 
 ## Contributing
+Fork and send pull requests as often as you want.
+
+## Todo
+* Export the results back
+* Need to set better unit tests
 
 ## Release History
 v0.1.0

@@ -10,12 +10,8 @@ spiderman = {
         # spiderman._.extend(this.options, opts);
         console.log('Begin')
 
-        if(typeof(csv) == "undefined")
-            spiderman.location = page
-            spiderman.spider(page, true)
-        else
-            spiderman.parseCsv(page)
-
+        spiderman.spider(page, true)
+   
         process.on('exit', () ->
             spiderman.showResults()
         )
