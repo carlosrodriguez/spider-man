@@ -10,6 +10,7 @@ spiderman = {
         # spiderman._.extend(this.options, opts);
         console.log('Begin')
 
+        spiderman.location = page
         spiderman.spider(page, true)
    
         process.on('exit', () ->
@@ -27,7 +28,7 @@ spiderman = {
         request = require('request')
         _ = require('lodash')
 
-        console.log("Checking: "+page);
+        console.log("Got page: "+page);
 
         request({uri: page}, (err, response, body) ->
             if(typeof response != "undefined")
