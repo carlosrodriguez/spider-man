@@ -62,7 +62,7 @@ spiderman = {
                             else
                                 console.log("Not checking external page: "+page);
                         else
-                            consle.log("Not checking already spidered page: "+page)
+                            console.log("Not checking already spidered page: "+page)
      
                         return
                     )
