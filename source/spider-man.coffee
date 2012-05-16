@@ -6,7 +6,7 @@ spiderman = {
     totalPages: 0
     options: {} 
 
-    punch: (page, csv) ->
+    web: (page, csv) ->
         # spiderman._.extend(this.options, opts);
         console.log('Begin')
 
@@ -20,7 +20,7 @@ spiderman = {
             spiderman.showResults()
         )
 
-        return    
+        return 
 
     showErrors: (error) ->
         console.log(error);
@@ -29,7 +29,6 @@ spiderman = {
     spider: (page, follow) ->
         cheerio = require('cheerio')
         request = require('request')
-        zombie = require('zombie')
         _ = require('lodash')
 
         console.log("Checking: "+page);
@@ -73,20 +72,6 @@ spiderman = {
         )
 
         return
-
-    parseCsv: (file) ->
-        csv = require('ya-csv')
-        reader = csv.createCsvFileReader(file, { columnsFromHeader: true });
-
-        reader.addListener('data', (page) ->
-            spiderman.spider(page.URL)
-        )
-
-        reader.addListener('end', () ->
-            console.log('End CSV parser. Waiting for results')
-        );
-
-        return reader;
 
     checkInternal: (page) -> 
 

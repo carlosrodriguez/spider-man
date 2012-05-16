@@ -28,7 +28,7 @@ exports['spiderman'] = {
   'Sanity Check': function(test) {
     test.expect(3);
     // tests here
-    test.equal(typeof(spiderman.punch), 'function', 'spiderman.punch is a function');
+    test.equal(typeof(spiderman.web), 'function', 'spiderman.punch is a function');
     test.equal(typeof(spiderman.spider), 'function', 'spiderman.spider is a function');
     test.equal(typeof(spiderman.checkInternal), 'function', 'spiderman.checkInternal is a function');
     test.done();
@@ -36,9 +36,9 @@ exports['spiderman'] = {
   'Check internal links': function(test) {
     //test.expect(3);
     // tests here
-    spiderman.location = "http://www.bgtpartners.com";
+    spiderman.location = "http://www.test.com";
     test.ok(spiderman.checkInternal("test.html"), 'Got internal link');
-    test.ok(!spiderman.checkInternal("http://www.test.com/test.html"), 'Got external link');
+    test.ok(!spiderman.checkInternal("http://www.test2.com/test.html"), 'Got external link');
     test.ok(!spiderman.checkInternal("test.jpg"), 'Got external link for a media file');
 
     test.done();
